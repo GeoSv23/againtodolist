@@ -1,0 +1,27 @@
+.controlBlockWrapper {
+  margin-bottom: 20px;
+}
+.input {
+  width: 80%;
+  height: 55px;
+  border: none;
+  /* border-bottom: 0.5px solid; */
+  margin-right: 5px;
+  font-size: 24px;
+  box-shadow: 0px 1px 0px lightcoral;
+}
+
+.AddButton {
+  width: 16%;
+  height: 50px;
+  transition: 0.2s;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0px 1px 0px lightcoral;
+}
+
+.AddButton:hover {
+  cursor: pointer;
+  transform: scale(0.98);
+  box-shadow: 0px 5px 0px lightgreen;
+}
