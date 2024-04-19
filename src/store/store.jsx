@@ -3,6 +3,9 @@ import { create } from 'zustand'
 export const useMyStore = create((set, get) => ({
   todos: [],
   addTodo: (title) => {
+    if (!title) {
+      return
+    }
     const newTodo = {id: get().todos.length + 1 , title, completed: false}
     set({todos: [newTodo, ...get().todos ]})
   },

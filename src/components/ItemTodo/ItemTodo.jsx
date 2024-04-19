@@ -45,8 +45,8 @@ export const ItemTodo = () => {
           {/* <span>{item.id}</span> */}
           <h3 className={styles.itemTitle}>{item.title}</h3>
           <div className={styles.btnsContainer}>
-            <button className={styles.ChangeBtn} onClick={() => todoChanger(item.id)}>Изменить</button>
-            <button className={styles.DelBtn} onClick={()=>handleDelTodo(item.id)}>Удалить</button>
+            <button className={styles.ChangeBtn} onClick={() => todoChanger(item.id)}>Edit</button>
+            <button className={styles.DelBtn} onClick={()=>handleDelTodo(item.id)}>Delette</button>
           </div>
         </div>
       ))}
