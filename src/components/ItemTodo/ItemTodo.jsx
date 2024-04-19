@@ -5,10 +5,10 @@ export const ItemTodo = () => {
   const checkTodo = useMyStore((state) => state.checkTodo);
   const filter = useMyStore((state) => state.filter);
   const { fetchTodos } = useMyStore();
-//   const changeTodo = useMyStore(state => state.changeTodo)
-//   const todoChanger = () => {
+  const changeTodo = useMyStore(state => state.changeTodo)
+  const todoChanger = (id, newTitle) => {
 
-//   }
+  }
 
 
   const delTodo = useMyStore(state => state.delTodo)
@@ -33,7 +33,11 @@ export const ItemTodo = () => {
     <>
       {todos.map((item) => (
         <div key={item.id} className={styles.ItemTodo}>
-          <input
+          <input style={
+            {width: 30,
+            height:30,
+            cursor:"pointer"}
+          }
             checked={item.completed}
             type="checkbox"
             onChange={() => checkTodo(item.id)}
@@ -41,7 +45,7 @@ export const ItemTodo = () => {
           {/* <span>{item.id}</span> */}
           <h3 className={styles.itemTitle}>{item.title}</h3>
           <div className={styles.btnsContainer}>
-            <button className={styles.ChangeBtn}>Изменить</button>
+            <button className={styles.ChangeBtn} onClick={() => todoChanger(item.id)}>Изменить</button>
             <button className={styles.DelBtn} onClick={()=>handleDelTodo(item.id)}>Удалить</button>
           </div>
         </div>
