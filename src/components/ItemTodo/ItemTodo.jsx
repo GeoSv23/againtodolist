@@ -1,14 +1,13 @@
 import styles from "./ItemTodo.module.css";
+import { v4 as uuidv4 } from 'uuid';
 import { useMyStore } from "../../store/store";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 export const ItemTodo = () => {
-  const checkTodo = useMyStore((state) => state.checkTodo);
+  const checkTodo = useMyStore((state) => state.completed);
   const filter = useMyStore((state) => state.filter);
-  const { fetchTodos } = useMyStore();
   const changeTodo = useMyStore((state) => state.changeTodo);
-  const todoChanger = (id, newTitle) => {};
 
-  const delTodo = useMyStore((state) => state.delTodo);
+  const delTodo = useMyStore((state) => state.del);
   const handleDelTodo = (id) => {
     delTodo(id);
   };
@@ -22,15 +21,11 @@ export const ItemTodo = () => {
         return state.todos;
     }
   });
-  //запрос к серверу
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
-  // const [value, setValue] = useState
+
   const todoRef = useRef();
   const handleTodoChange = (e, id) => {
     const newTitle = e.target.value;
-    changeTodo(id, newTitle); // Обновляем заголовок задачи
+    changeTodo(id, newTitle); 
   };
 
   // const todoOnFocus = (id) => {
@@ -40,27 +35,20 @@ export const ItemTodo = () => {
   return (
     <>
       {todos.map((item) => (
-        <div key={item.id} className={styles.ItemTodo}>
+        <div key={uuidv4} className={styles.ItemTodo}>
           <input
             style={{ width: 30, height: 30, cursor: "pointer" }}
             checked={item.completed}
             type="checkbox"
             onChange={() => checkTodo(item.id)}
           />
-          {/* <span>{item.id}</span> */}
           <input
             ref={todoRef}
             className={styles.itemTitle}
-            onChange={(e) => handleTodoChange(e, item.id)} // Вызываем функцию при изменении значения
+            onChange={(e) => handleTodoChange(e, item.id)} 
             value={item.title}
           ></input>
           <div className={styles.btnsContainer}>
-            <button
-              className={styles.ChangeBtn}
-              // onClick={() => todoOnFocus(item.id)}
-            >
-              Edit
-            </button>
             <button
               className={styles.DelBtn}
               onClick={() => handleDelTodo(item.id)}

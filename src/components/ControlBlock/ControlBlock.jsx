@@ -2,7 +2,7 @@ import styles from './ControlBlock.module.css'
 import { useMyStore } from '../../store/store'
 import { useRef } from 'react'
 export const ControlBlock = () => {
-    const addTodo = useMyStore(state => state.addTodo)
+    const addTodo = useMyStore(state => state.add)
     const ref = useRef()
     const handleAddTodo = () => {
         addTodo(ref.current.value)
